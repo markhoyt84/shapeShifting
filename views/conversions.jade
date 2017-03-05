@@ -1,0 +1,26 @@
+extends layout
+
+script.
+
+
+block content
+    h1= title
+        table
+            thead
+                th Exchange
+                th Ethereum
+                th LiteCoin
+                th DASH
+                tbody
+                    tr
+                        td BitTrex
+                        td= bitTrex.eth.Last
+                        td= bitTrex.ltc.Last
+                        td= bitTrex.dash.Last
+
+                        tr
+                        td BTCE
+                        td= btce.eth.last
+                        td= btce.ltc.last
+                        td= btce.dash.last
+    h3 Other Exchange

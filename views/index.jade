@@ -1,0 +1,83 @@
+extends layout
+
+block content
+        h1= title
+        div.row
+            h3 Current Exchange Rates
+            table.table-bordered.table
+                thead
+                th Exchange
+                th Ethereum
+                th LiteCoin
+                th DASH
+                tbody
+                    tr.table-striped
+                        td BitTrex
+                        td= bitTrex.ETH
+                        td= bitTrex.LTC
+                        td= bitTrex.DASH
+
+                     tr
+                        td BTCE
+                        td= btce.ETH.last
+                        td= btce.LTC.last
+                        td= btce.DASH.last
+        div.row
+            div.col-md-6
+                h3 How much would you like to convert?
+                form
+                    div.form-group
+                        input.form-control(id='amountToConvert' type='text' placeholder='BitCoin amount to convert')
+                    br
+                    h3 Convert your BitCoins To..
+                    div.form-group
+                        select.form-control(id='toCurrency')
+                            option ETH
+                            option DASH
+                            option LTC
+                    br
+                    br
+                    div.form-group
+                        input.form-control(type='button' value='CONVERT' id='getConversion' class='btn-success')
+
+            div.col-md-6.is-hidden(id="results")
+                h3 Best Exchange Site
+                p.text-center(id="bestExchangeCompany")
+                br
+                br
+                h3 Your BitCoins are worth
+                p.text-center(id="bestConversionAmount")
+                br
+                br
+                p.text-center(id="exchangeMargin")
+
+
+        script.
+            $("#getConversion").on('click', function (event) {
+                console.log("clicked")
+                var fromCurrency = $("#fromCurrency").val();
+                var toCurrency = $("#toCurrency").val();
+                var amountToConvert = $("#amountToConvert").val();
+                if (amountToConvert === "" || isNaN(amountToConvert)){
+                    alert("Converting amount must be a number?");
+                } else {
+                    var data = {toCurrency: toCurrency, amountToConvert: amountToConvert};
+                    console.log(data)
+                    $.ajax({
+                        url: "/conversions",
+                        data: data,
+                        type: 'post',
+                        error: function() {
+                            alert("Sorry there was an error please try again")
+                        },
+                        success: function(data) {
+                            console.log("success with data" + data);
+                            console.log(data);
+                            $(".is-hidden").removeClass("is-hidden");
+                            $("#bestExchangeCompany").text(data.bestResult.exchangePlatform);
+                            $("#bestConversionAmount").text(data.bestResult.exchangeRate + " " + data.bestResult.toCurrency);
+                            $("#exchangeMargin").text(data.bestResult.exchangePlatform + " will earn you " + data.exchangeMargin + " " + data.bestResult.toCurrency + " more than if you exchange at " + data.otherResult.exchangePlatform);
+                        }
+                    })
+                };
+            });

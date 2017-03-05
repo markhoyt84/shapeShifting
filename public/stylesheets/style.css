@@ -1,0 +1,18 @@
+body {
+    /*background-image: url("https://s-media-cache-ak0.pinimg.com/originals/3d/a3/72/3da372e16eb08ede065bf2aeed8ce9be.jpg");*/
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+h3, h2, h1 {
+    /*color: white !important;*/
+    text-align: center !important;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.is-hidden {
+    visibility: hidden;
+}
