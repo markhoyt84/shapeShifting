@@ -15,7 +15,7 @@ router.convertCurrency = function (currencyType, amount, next) {
   async.parallel({
     bittrex: function(callback) {
       request({
-            url: 'http://localhost:3000/api/getCurrentBittrexData',
+            url: 'https://ancient-brushlands-51832.herokuapp.com/api/getCurrentBittrexData',
             method: 'GET',
             qs: {currencyType: currencyType},
           }, function (err, response, body) {
@@ -35,7 +35,7 @@ router.convertCurrency = function (currencyType, amount, next) {
     },
     btceData: function(callback) {
       request({
-        url: 'http://localhost:3000/api/getCurrentBTCEData',
+        url: 'https://ancient-brushlands-51832.herokuapp.com/api/getCurrentBTCEData',
         method: 'GET',
         qs: {currencyType: currencyType},
       }, function (err, response, body) {
