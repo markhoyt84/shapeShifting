@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
   async.parallel({
     bittrexData: function(callback) {
       request({
-        url: 'http://localhost:3000/api/getCurrentBittrexData',
+        url: 'http://0.0.0.0:3000/api/getCurrentBittrexData',
         method: 'GET'
       }, function (err, response, body) {
         if(err) {
@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
     },
     btceData: function(callback) {
       request({
-        url: 'http://localhost:3000/api/getCurrentBTCEData',
+        url: 'http://0.0.0.0:3000/api/getCurrentBTCEData',
         method: 'GET'
       }, function (err, response, body) {
         if(err) {
