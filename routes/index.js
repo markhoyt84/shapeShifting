@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
   async.parallel({
     bittrexData: function(callback) {
       request({
-        url: 'http://shapeless-shifter.herokuapp.com/api/getCurrentBittrexData',
+        url: 'http://shapeless-shifting.herokuapp.com/api/getCurrentBittrexData',
         method: 'GET'
       }, function (err, response, body) {
         if(err) {
@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
     },
     btceData: function(callback) {
       request({
-        url: 'http://shapeless-shifter.herokuapp.com/api/getCurrentBTCEData',
+        url: 'http://shapeless-shifting.herokuapp.com/api/getCurrentBTCEData',
         method: 'GET'
       }, function (err, response, body) {
         if(err) {
