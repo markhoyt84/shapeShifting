@@ -8,11 +8,9 @@ var supportedCurrencies = ['LTC', 'DASH', 'ETH'];
 router.get('/getCurrentBittrexData', function(req, res) {
     var base_url = 'https://bittrex.com/api/v1.1/public';
     var queryParams = supportedCurrencies;
-    console.log(req.query);
     if (Object.keys(req.query).length > 0) {
         queryParams = [req.query.currencyType];
     }
-    console.log(queryParams);
     async.parallel(
         {
             LTC: function(callback) {
@@ -170,9 +168,7 @@ router.get('/getCurrentBTCEData', function(req, res) {
             var keys = Object.keys(results);
             for (var i = 0; i < keys.length; i++) {
                 if(results[keys[i]] !== undefined && results[keys[i]] !== null) {
-                    console.log(results[keys[i]]);
                     finalResults[keys[i]] = results[keys[i]];
-
                 }
             }
             res.json(finalResults);

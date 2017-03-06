@@ -16,9 +16,9 @@ router.get('/', function(req, res, next) {
           var error = new Error();
           error.status = err.status;
           error.statusCode = err.statusCode;
+          callback(error, {info: err});
         } else {
           var data = JSON.parse(body);
-          console.log(data);
           callback(null, data)
         }
       })
@@ -32,7 +32,7 @@ router.get('/', function(req, res, next) {
           var error = new Error();
           error.status = err.status;
           error.statusCode = err.statusCode;
-          console.log(err);
+          callback(error, {info: err});
         } else {
           var data = JSON.parse(body);
           callback(null, data);
@@ -41,18 +41,11 @@ router.get('/', function(req, res, next) {
     }
   }, function(err, results) {
     if(err) {
-      console.log(err);
+      throw err;
     } else {
-      console.log(results)
       res.render('index', { title: 'BitCoin Exchange', bitTrex: results.bittrexData, btce: results.btceData });
     }
   });
 });
-//
-// router.get('https://bittrex.com/api/v1.1/public/getmarkets', function(req, res, next) {
-//   request('https://bittrex.com/api/v1.1/public/getmarkets', function(err, body) {
-//
-//   })
-// });
 
 module.exports = router;
