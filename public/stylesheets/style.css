@@ -1,12 +1,19 @@
 body {
-    /*background-image: url("https://s-media-cache-ak0.pinimg.com/originals/3d/a3/72/3da372e16eb08ede065bf2aeed8ce9be.jpg");*/
+    background-image: url("http://ak6.picdn.net/shutterstock/videos/1413481/thumb/1.jpg");
+    background-size: 100%;
     padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-h3, h2, h1 {
-    /*color: white !important;*/
+h3, h2, h1, td {
+    color: white !important;
     text-align: center !important;
+}
+
+td, th, p {
+    color: white !important;
+    text-align: center !important;
+    font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {

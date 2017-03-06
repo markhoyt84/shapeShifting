@@ -44,7 +44,7 @@ router.get('/', function(req, res, next) {
       console.log(err);
     } else {
       console.log(results)
-      res.render('index', { title: 'Exchange', bitTrex: results.bittrexData, btce: results.btceData });
+      res.render('index', { title: 'BitCoin Exchange', bitTrex: results.bittrexData, btce: results.btceData });
     }
   });
 });
